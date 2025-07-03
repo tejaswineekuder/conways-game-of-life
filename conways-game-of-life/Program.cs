@@ -6,8 +6,8 @@ using Microsoft.Extensions.Hosting;
 
 
 // Initialising some custom values for the game to run.
-var Height = 5;
-var Width = 5;
+var Height = 10;
+var Width = 40;
 var MaxRuns = 50;
 var runs = 0;
 
@@ -24,13 +24,8 @@ var host = Host.CreateDefaultBuilder(args)
     })
     .Build();
 
-using var scope = host.Services.CreateScope();
-var services = scope.ServiceProvider;
 
-var displayService = services.GetRequiredService<IDisplay>();
-var lifeSimulationService = services.GetRequiredService<ILifeSimulation>();
-
-lifeSimulationService = new LifeSimulation(Height, Width, displayService);
+var lifeSimulationService = host.Services.GetRequiredService<ILifeSimulation>();
 
 
 while (runs++ < MaxRuns)
