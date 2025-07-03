@@ -26,7 +26,7 @@ namespace conways_game_of_life.Services
 
         public void DisplayAndSimulate()
         {
-            _display.DisplayGame(currentGrid, _width, _height);
+            _display.DisplayGame(currentGrid, _height, _width);
             SimulateNextInstance();
         }
 
